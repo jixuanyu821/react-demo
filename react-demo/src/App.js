@@ -1,31 +1,74 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TimeMachine from './index.jsx'
 import ConditionRender from './ConditionalRender.jsx'
-// function MessageBox(props){
-// return <h1>messageBox!{props.msg}</h1> 
-// }
+import MapList from './MapList'
+import ComponentApi from './ComponentApi'
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      count:0
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  componentWillMount(){
+    //渲染前 类似vue created
+    console.log('Component WILL MOUNT!')
+  }
+  componentDidMount(){
+    //dom加载完 类似vue mounted
+    console.log('Component DID MOUNT!')
+    // this.serverRequest = $.get(this.props.source,function(result){
+      // var lastGIst = result[0]
+    // })
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <TimeMachine/>
-        <ConditionRender/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="./index1.html"
-          target="_blank"
-          rel="noopener noreferrer">Learn React
-        </a>
-      </header>
-    </div>
-  );
+  }
+  componentWillReceiveProps(newProps){
+    //组件接收到新的prop后调用  不会调用render
+    console.log('Component WILL RECEIVE PROPS!')
+  }
+  shouldComponentUpdate(newProps, newState){
+    //返回布尔值
+    return true;
+  }
+  componentWillUpdate(nextProps, nextState){
+    //组件接收新的props 或者state但还没有render时调用 初始化的时候不会调用
+    console.log('Component WILL UPDATE!');
+  }
+  componentDidUpdate(prevProps, prevState){
+    //组件更新完调用
+    console.log('Component DID UPDATE!')
+  }
+  componentWillMount(){
+    //组件被从dom中移除时调用
+    console.log('Component WILL UNMOUNT!')
+  }
+  handleClick(){
+    this.setState(function(state) {
+      return{
+        count:state.count+1
+      }
+    })
+  }
+  render(){  
+    return (
+      <div className="App">
+        <header className="App-header">
+          {/* 组件API */}
+          <ComponentApi/>
+          <button onClick={this.handleClick}>123</button>
+          {this.state.count}
+          {/* 基础用法 */}
+          <TimeMachine/>
+          {/* 列表渲染  for/map */}
+          <MapList/>
+          {/* 条件渲染 */}
+          <ConditionRender/>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
