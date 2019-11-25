@@ -4,6 +4,7 @@ import TimeMachine from './index.jsx'
 import ConditionRender from './ConditionalRender.jsx'
 import MapList from './MapList'
 import ComponentApi from './ComponentApi'
+import AxiosDemo from './AxiosDemo'
 class App extends React.Component{
   constructor(props){
     super(props)
@@ -61,6 +62,8 @@ class App extends React.Component{
           {this.state.count}
           {/* 基础用法 */}
           <TimeMachine/>
+          {/* axiosdemo */}
+          <AxiosDemo/>
           {/* 列表渲染  for/map */}
           <MapList/>
           {/* 条件渲染 */}
