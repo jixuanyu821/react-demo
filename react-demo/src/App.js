@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import 'antd/dist/antd.css'
 import TimeMachine from './index.jsx'
 import ConditionRender from './ConditionalRender.jsx'
 import MapList from './MapList'
 import ComponentApi from './ComponentApi'
 import AxiosDemo from './AxiosDemo'
+import Index from './Component/index'
 class App extends React.Component{
   constructor(props){
     super(props)
@@ -65,6 +67,7 @@ class App extends React.Component{
           {/* axiosdemo */}
           <AxiosDemo/>
           {/* 列表渲染  for/map */}
+          <Index/>
           <MapList/>
           {/* 条件渲染 */}
           <ConditionRender/>
