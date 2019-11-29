@@ -7,6 +7,9 @@ import MapList from './MapList'
 import ComponentApi from './ComponentApi'
 import AxiosDemo from './AxiosDemo'
 import Index from './Component/index'
+import { Button } from 'antd';
+import { Router, Route, Link } from 'react-router'
+
 class App extends React.Component{
   constructor(props){
     super(props)
@@ -60,9 +63,10 @@ class App extends React.Component{
         <header className="App-header">
           {/* 组件API */}
           <ComponentApi/>
-          <button onClick={this.handleClick}>123</button>
+          <Button onClick={(e)=>this.handleClick(e)}>123</Button>
           {this.state.count}
           {/* 基础用法 */}
+          <Link to="/TimeMachine"></Link> 
           <TimeMachine/>
           {/* axiosdemo */}
           <AxiosDemo/>
@@ -72,6 +76,7 @@ class App extends React.Component{
           {/* 条件渲染 */}
           <ConditionRender/>
         </header>
+        {this.props.children}
       </div>
     );
   }

@@ -15,7 +15,7 @@ axios.interceptors.request.use(
 //返回后拦截
 axios.interceptors.response.use(
   data=>{
-      if(data.code == 0){
+      if(data.code === 0){
         console.log(data.data,'data')
       }
       return data.data;
