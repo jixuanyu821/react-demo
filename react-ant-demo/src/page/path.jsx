@@ -4,6 +4,9 @@ import { Button } from 'antd'
 class Path extends React.Component{
   constructor(props){
     super(props)
+    this.state = {
+      value:0
+    }
   }
   handleClick(e){
     this.props.history.push({pathname:'/about',search:'?some=state'})
@@ -13,7 +16,10 @@ class Path extends React.Component{
       <div>
         path页
         <Link to="/">返回首页</Link>
+        <br/>
         <Button onClick={ (e)=>this.handleClick(e) }>about</Button>
+        <br/>
+        <p>{this.state.value}</p>
         {this.props.children}
       </div>
     );

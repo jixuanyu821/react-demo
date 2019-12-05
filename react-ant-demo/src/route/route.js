@@ -7,11 +7,11 @@ class MyRouter extends React.Component{
   render() {
     return(
       <Router>
-        {/* <Switch> */}
+        <Switch>
           <Route exact path='/' component={App}></Route>
           <Route path='/path' component={Path}></Route>
           <Route path='/About' component={About}></Route>
-        {/* </Switch> */}
+        </Switch>
       </Router>
     )
   }

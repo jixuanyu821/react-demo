@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import MyRouter from './route/route'
+// import store from './redux/index'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<MyRouter />, document.getElementById('root'));
