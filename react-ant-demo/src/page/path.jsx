@@ -35,6 +35,14 @@ class Path extends React.Component{
     }
     https.postRequestBody('/addTable',param).then((res)=>{
       console.log(res);
+      this.upDateTable()
+    });
+  }
+  delTable(e,id){
+    var ids = [id]
+    https.postRequestBody('/removeTable',ids).then((res)=>{
+      console.log(res);
+      this.upDateTable()
     });
   }
   componentDidMount(){
@@ -58,6 +66,7 @@ class Path extends React.Component{
               <td>路径</td>
               <td>排名</td>
               <td>国家</td>
+              <td>操作</td>
             </tr>
           </thead>
           <tbody>
@@ -67,8 +76,8 @@ class Path extends React.Component{
                 <td>{data.name}</td>
                 <td>{data.url}</td>
                 <td>{data.alexa}</td>
-                <td>{data.country=='CN'?'中国':'美国'}</td>
-                
+                <td>{data.country==='CN'?'中国':'美国'}</td>
+                <td><Button onClick={ (e)=>this.delTable(e,data.id) }>新增</Button></td>
               </tr>)
             })}
           </tbody>
